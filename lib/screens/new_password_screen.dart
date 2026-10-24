@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 import '../widgets/back_button_box.dart';
 import '../widgets/custom_button.dart';
@@ -25,7 +26,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   // Los 3 requisitos, calculados en tiempo real
   bool get _tiene8 => _passwordController.text.length >= 8;
-  bool get _tieneMayuscula => RegExp(r'[A-Z]').hasMatch(_passwordController.text);
+  bool get _tieneMayuscula =>
+      RegExp(r'[A-Z]').hasMatch(_passwordController.text);
   bool get _tieneNumero => RegExp(r'[0-9]').hasMatch(_passwordController.text);
   bool get _coinciden =>
       _confirmController.text.isNotEmpty &&
@@ -35,10 +37,12 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       _tiene8 && _tieneMayuscula && _tieneNumero && _coinciden;
 
   void _submit() {
+    // El SnackBar sigue visible después de cambiar de pantalla
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('¡Contraseña restablecida con éxito!')),
     );
-    // TODO: cuando exista Login, volver a Login con el mensaje de éxito
+    // Vuelve a Login y borra el historial
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
   Widget _requisito(String texto, bool cumplido) {
@@ -105,8 +109,10 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   const SizedBox(height: 16),
                   // Etiqueta "Código verificado"
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFDCFCE7),
                       borderRadius: BorderRadius.circular(20),
@@ -135,8 +141,11 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       gradient: AppColors.pinkGradient,
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: const Icon(Icons.lock_outline,
-                        color: Colors.white, size: 28),
+                    child: const Icon(
+                      Icons.lock_outline,
+                      color: Colors.white,
+                      size: 28,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   const Text(

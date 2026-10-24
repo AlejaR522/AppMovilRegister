@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../routes/app_routes.dart';
 import '../theme/app_colors.dart';
 import '../utils/validators.dart';
 import '../widgets/back_button_box.dart';
@@ -27,11 +26,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      // TODO: cuando exista la pantalla de código, ir a ella.
-      // Por ahora saltamos a Nueva contraseña para poder probar el flujo.
+      // Va a la pantalla de código enviando el correo
       Navigator.pushNamed(
         context,
-        AppRoutes.newPassword,
+        '/verification',
         arguments: _emailController.text.trim(),
       );
     }

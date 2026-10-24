@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 import '../utils/validators.dart';
 import '../widgets/back_button_box.dart';
@@ -32,10 +33,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      // TODO: cuando exista Home:
-      // Navigator.pushNamed(context, AppRoutes.home, arguments: _emailController.text);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Cuenta creada para ${_emailController.text}')),
+      // Va a Home enviando el correo y borra el historial
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/home',
+        (route) => false,
+        arguments: _emailController.text.trim(),
       );
     }
   }
@@ -56,7 +59,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             top: 130,
             right: 50,
             child: DecorShape(
-                size: 40, type: ShapeType.ring, color: AppColors.primary),
+              size: 40,
+              type: ShapeType.ring,
+              color: AppColors.primary,
+            ),
           ),
           Positioned(
             top: 180,
@@ -129,7 +135,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: _confirmController,
                       isPassword: true,
                       validator: (v) => Validators.confirmPassword(
-                          v, _passwordController.text),
+                        v,
+                        _passwordController.text,
+                      ),
                     ),
                     const SizedBox(height: 14),
                     Row(
@@ -138,7 +146,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           value: _acceptTerms,
                           activeColor: AppColors.primary,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4)),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
                           onChanged: (v) =>
                               setState(() => _acceptTerms = v ?? false),
                         ),
@@ -147,7 +156,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             TextSpan(
                               text: 'Acepto los ',
                               style: TextStyle(
-                                  fontSize: 12, color: AppColors.textGrey),
+                                fontSize: 12,
+                                color: AppColors.textGrey,
+                              ),
                               children: [
                                 TextSpan(
                                   text: 'Términos y condiciones',
@@ -177,7 +188,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const Text(
                             '¿Ya tienes cuenta? ',
                             style: TextStyle(
-                                fontSize: 13, color: AppColors.textGrey),
+                              fontSize: 13,
+                              color: AppColors.textGrey,
+                            ),
                           ),
                           GestureDetector(
                             // TODO: ir a Login cuando exista
