@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_colors.dart';
 
 class CustomInput extends StatefulWidget {
@@ -55,13 +56,16 @@ class _CustomInputState extends State<CustomInput> {
           obscureText: widget.isPassword && _ocultar,
           validator: widget.validator,
           onChanged: widget.onChanged,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
             hintText: widget.hint,
             hintStyle: const TextStyle(color: AppColors.textGrey, fontSize: 14),
             filled: true,
             fillColor: AppColors.inputFill,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
             enabledBorder: _borde(AppColors.inputBorder),
             focusedBorder: _borde(AppColors.primary),
             errorBorder: _borde(AppColors.error),
