@@ -2,10 +2,11 @@
 
 Maquetación interactiva de un flujo de autenticación móvil hecha con **Flutter**, a partir de un diseño en Figma. No hay backend: los datos se simulan en memoria.
 
-**Diseño de referencia:** [Figma – Login y Registro – App móvil](https://www.figma.com/design/auqlin8ZFmcTs8deTsAgYi/Login-y-Registro-%E2%80%93-App-m%C3%B3vil?node-id=0-1&p=f)
+**Diseño de referencia:** 
+(https://www.figma.com/design/auqlin8ZFmcTs8deTsAgYi/Login-y-Registro-%E2%80%93-App-m%C3%B3vil?node-id=0-1&p=f)
 
-**Autora:** _Tu nombre aquí_
-**Curso:** Aplicaciones Móviles – Tecnología en Desarrollo de Software
+**Autora:** Alejandra Ruiz
+**Curso:** Aplicaciones Móviles – Desarrollo de Software
 
 ---
 
